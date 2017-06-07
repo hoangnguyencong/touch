@@ -1,4 +1,4 @@
-describe('Routes: index', () => {
+describe.only('Routes: index', () => {
   describe('GET /', () => {
     it('Returns the API status', (done) => {
       request
