@@ -10,6 +10,7 @@ jobs:
           POSTGRES_DB: contacts
 
       - image: hoangitdct/touchtest
+      
     working_directory: /go/src/github.com/circleci/cci-demo-docker
 
     environment:
