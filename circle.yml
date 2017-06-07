@@ -4,6 +4,7 @@ jobs:
     docker:
       # using custom image, see .circleci/images/primary/Dockerfile
       - image: node:latest
+
       - image: postgres:9.6.3
         environment:
           POSTGRES_USER: root
