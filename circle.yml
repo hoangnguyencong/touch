@@ -17,7 +17,6 @@ jobs:
       TEST_RESULTS: /tmp/test-results
 
     steps:
-      - ls
       - checkout
 
       - run:
