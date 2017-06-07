@@ -3,7 +3,7 @@ jobs:
   build:
     docker:
       # using custom image, see .circleci/images/primary/Dockerfile
-      - image: node:latest
+      - image: hoangitdct/touchtest:latest
 
       - image: postgres:9.6.3
         environment:
