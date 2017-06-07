@@ -8,7 +8,7 @@ jobs:
           POSTGRES_USER: root
           POSTGRES_PASSWORD: root
           POSTGRES_DB: touchdb_test
-      - image: hoangitdct/touchtest:latest
+      # - image: hoangitdct/touchtest:latest
 
 
     working_directory: backend/src
