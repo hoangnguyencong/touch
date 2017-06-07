@@ -1,0 +1,42 @@
+version: '2'
+
+services:
+  postgresprod:
+    image: postgres:9.6.3
+    environment:
+      POSTGRES_DB: touchdb_prod
+      POSTGRES_PASSWORD: root
+      POSTGRES_USER: root
+    labels:
+      io.rancher.scheduler.affinity:host_label: touchdb=true
+
+  touchproduction:
+    image: hoangitdct/touchserver:latest
+    environment:
+      NODE_ENV: production
+    volumes:
+      - touch_logs:/web/src/logs
+      - touch_uploads:/web/src/public/uploads
+
+    command:
+      - /usr/local/bin/wait_for_it.sh
+      - postgresprod:5432
+      - --
+      - npm
+      - run
+      - prod
+
+    labels:
+      io.rancher.scheduler.affinity:host_label: touchserver=true
+
+  touchlb:
+    image: rancher/lb-service-haproxy:v0.7.1
+    ports:
+      - 8093:8093/tcp
+      - 3000:3000/tcp
+
+    labels:
+      io.rancher.scheduler.affinity:host_label: touchlb=true
+      io.rancher.container.agent.role: environmentAdmin
+      io.rancher.container.create_agent: 'true'
+ 

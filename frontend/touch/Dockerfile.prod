@@ -1,0 +1,22 @@
+###########################################
+# Dockerfile
+###########################################
+
+FROM node:slim
+
+MAINTAINER Hoang Nguyen <hoang.nguyencong@asnet.com.vn>
+
+RUN npm i -g yarn cross-env
+
+RUN apt-get update && apt-get install bzip2
+
+RUN mkdir /frontend
+
+COPY package.json /frontend
+
+RUN cd /frontend && yarn
+
+COPY . /frontend/touch
+
+# Working directory
+WORKDIR /frontend/touch

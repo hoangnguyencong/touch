@@ -1,0 +1,6 @@
+{
+  "verbose": true,
+  "ignore": ["logs", "migrations", "public/uploads", "seeders"],
+  "ext": "js html",
+  "delay": "2500"
+}

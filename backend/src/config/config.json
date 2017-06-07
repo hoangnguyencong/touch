@@ -1,0 +1,40 @@
+{
+  "development": {
+    "username": "root",
+    "password": "root",
+    "database": "touchdb",
+    "host": "postgres_dev",
+    "dialect": "postgres",
+    "define": {
+      "underscored": false
+    },
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "idle": 10000
+    }
+  },
+  "test": {
+    "username": "root",
+    "password": "root",
+    "database": "touchdb_test",
+    "host": "postgres_test",
+    "dialect": "postgres",
+    "define": {
+      "underscored": false
+    },
+    "logging": false,
+    "pool": {
+      "max": 5,
+      "min": 0,
+      "idle": 10000
+    }
+  },
+  "production": {
+    "username": "root",
+    "password": "root",
+    "database": "touchdb_prod",
+    "host": "postgresprod",
+    "dialect": "postgres"
+  }
+}

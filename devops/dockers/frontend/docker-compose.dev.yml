@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+
+  touchdb_frontend_dev:
+    build:
+      context: ../../../frontend/touch
+      dockerfile: Dockerfile.dev
+
+    environment:
+      NODE_ENV: development
+
+    volumes:
+      - ../../../frontend/touch:/frontend/touch
+
+    ports:
+      - 4000:4000
+
+    command: ["npm", "start"]

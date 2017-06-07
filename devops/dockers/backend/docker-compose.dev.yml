@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  postgres_dev:
+    image: postgres:9.6.3
+
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: touchdb
+
+  touchdb_dev:
+    build:
+      context: ../../../backend/src
+      dockerfile: Dockerfile.dev
+
+    environment:
+      NODE_ENV: development
+
+    depends_on:
+      - postgres_dev
+
+    volumes:
+      - ../../../backend/src:/web/src
+
+    ports:
+      - 3000
+
+    command: ["/usr/local/bin/wait_for_it.sh", "postgres_dev:5432", "--", "npm", "run", "dev"]

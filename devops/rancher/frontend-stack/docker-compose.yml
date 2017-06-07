@@ -1,0 +1,7 @@
+version: '2'
+
+services:
+  nginxfrontend:
+    image: hoangitdct/touchfrontendnginx:latest
+    labels:
+      io.rancher.scheduler.affinity:host_label: touchfrontend=true

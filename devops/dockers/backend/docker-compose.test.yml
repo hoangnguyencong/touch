@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+  postgres_test:
+    image: postgres:9.6.3
+
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: touchdb_test
+
+  touch_test:
+    build:
+      context: ../../../backend/src
+      dockerfile: Dockerfile.test
+
+    depends_on:
+      - postgres_test
+
+    environment:
+      NODE_ENV: test
+
+    volumes:
+      - ../../../backend/src:/web/src
+
+    ports:
+      - 3000:3000
+
+    command: ["/usr/local/bin/wait_for_it.sh", "postgres_dev:5432", "--", "npm", "run test:watch"]
