@@ -3,12 +3,12 @@ jobs:
   build:
     docker:
       # using custom image, see .circleci/images/primary/Dockerfile
-      - image: hoangitdct/touchtest
       - image: postgres:9.6.3
         environment:
           POSTGRES_USER: root
           POSTGRES_PASSWORD: root
           POSTGRES_DB: touchdb_test
+      - image: hoangitdct/touchtest
 
     working_directory: backend/src
 
