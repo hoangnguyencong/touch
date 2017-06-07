@@ -8,27 +8,4 @@ MAINTAINER Hoang Nguyen <hoang.nguyencong@asnet.com.vn>
 
 RUN npm i -g yarn
 
-RUN mkdir /web
 
-# Caching node_modules
-COPY package.json /web
-
-# Caching scripts
-COPY wait_for_it.sh /usr/local/bin/wait_for_it.sh
-
-# Grant exec permission
-# RUN sudo chmod +x /usr/local/bin/wait_for_it.sh
-RUN su -c "chmod +x /usr/local/bin/wait_for_it.sh"
-
-# Install node_modules
-RUN cd /web && yarn
-
-# RUN npm i -g nodemon@1.11.0 babel-cli@6.24.1
-
-# RUN npm i -g babel-register@6.24.1 mocha@3.2.0
-
-# Copy source code
-COPY . /web/src
-
-# Working directory
-WORKDIR /web/src
