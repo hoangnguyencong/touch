@@ -10,12 +10,14 @@ jobs:
           POSTGRES_DB: touchdb_test
       - image: hoangitdct/touchtest:latest
 
+
     working_directory: backend/src
 
     environment:
       TEST_RESULTS: /tmp/test-results
 
     steps:
+      - ls
       - checkout
 
       - run:
