@@ -1,0 +1,9 @@
+version: 2
+ jobs:
+   build:
+     working_directory: touch
+     docker:
+       - image: circleci/node:latest
+     steps:
+       - checkout
+       - run: echo "hello world"
