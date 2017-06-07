@@ -10,6 +10,8 @@ jobs:
           POSTGRES_PASSWORD: root
           POSTGRES_DB: touchdb_test
 
+    working_directory: backend/src
+
     environment:
       TEST_RESULTS: /tmp/test-results
 
