@@ -18,4 +18,4 @@ services:
     environment:
       NODE_ENV: test
 
-    command: ["/usr/local/bin/wait_for_it.sh", "postgres_test:5432", "--", "npm", "run test"]
+    command: ["/usr/local/bin/wait_for_it.sh", "postgres_test:5432", "--", "su -c 'npm run test'"]
