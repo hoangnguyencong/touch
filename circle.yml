@@ -21,7 +21,7 @@ jobs:
             set -x
             cd devops/dockers/backend
             chmod +x ./runner.sh
-            ./runner.sh test "up -d"
+            ./runner.sh test "up"
             docker wait backend_touch_test_1
             echo $?
 
