@@ -29,7 +29,7 @@ jobs:
             set -x
             cd devops/dockers/backend
             chmod +x ./runner.sh
-            ./runner.sh test "up -d"
+            ./runner.sh test up
 
       - deploy:
           name: Build and push Docker image
