@@ -27,7 +27,7 @@ jobs:
           name: Start container and verify it's working
           command: |
             set -x
-            cd deveops/dockers/backend
+            cd /touch_app/deveops/dockers/backend
             chmod +x ./runner.sh
             ./runner.sh test up
             docker-compose up -d
