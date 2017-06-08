@@ -4,7 +4,7 @@ jobs:
     docker:
       # using custom image, see .circleci/images/primary/Dockerfile
       # - image: circleci/cci-demo-docker-primary:0.0.2
-      - image: zammad/zammad-docker-compose # primary image
+      - image: hoangitdct/docker-compose:17.03.x-ce # primary image
         
       - image: postgres:9.6.3
         environment:
