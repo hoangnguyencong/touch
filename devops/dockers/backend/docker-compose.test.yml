@@ -10,9 +10,7 @@ services:
       POSTGRES_DB: touchdb_test
 
   touch_test:
-    build:
-      context: ../../../backend/src
-      dockerfile: Dockerfile.test
+    image: hoangitdct/touchtest
 
     depends_on:
       - postgres_test
@@ -20,10 +18,4 @@ services:
     environment:
       NODE_ENV: test
 
-    volumes:
-      - ../../../backend/src:/web/src
-
-    ports:
-      - 3000:3000
-
-    command: ["/usr/local/bin/wait_for_it.sh", "postgres_dev:5432", "--", "npm", "run test:watch"]
+    command: ["/usr/local/bin/wait_for_it.sh", "postgres_test:5432", "--", "npm", "run test"]

@@ -6,6 +6,13 @@ jobs:
       # using custom image, see .circleci/images/primary/Dockerfile
       # - image: circleci/cci-demo-docker-primary:0.0.2
       - image: hoangitdct/docker-compose:17.03.x-ce # primary image
+        
+      - image: postgres:9.6.3
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: root
+          POSTGRES_DB: touchdb_test
+      - image: hoangitdct/touchtest
 
     working_directory: touch_app
 
@@ -23,7 +30,6 @@ jobs:
             set -x
             cd devops/dockers/backend
             chmod +x ./runner.sh
-            ./runner.sh test build
             ./runner.sh test "up -d"
 
       - deploy:
