@@ -21,7 +21,8 @@ jobs:
             set -x
             cd devops/dockers/backend
             chmod +x ./runner.sh
-            docker-compose -f docker-compose.test.yml up
+            ./runner.sh test "up -d"
+            docker wait backend_touch_test_1
             echo $?
 
       - deploy:

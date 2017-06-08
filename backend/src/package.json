@@ -4,7 +4,7 @@
   "description": "This is a project only for purpose training",
   "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test ../node_modules/mocha/bin/mocha test/**/*.js && exit $?",
+    "test": "NODE_ENV=test ../node_modules/mocha/bin/mocha test/**/*.js",
     "test:watch": "NODE_ENV=test ../node_modules/nodemon/bin/nodemon.js --watch ./test --exec '../node_modules/mocha/bin/mocha test/**/*.js'",
     "test:coverage": "NODE_ENV=test istanbul cover ../node_modules/mocha/bin/_mocha test/**/*.js",
     "start": "npm run apidoc && npm run clusters",
