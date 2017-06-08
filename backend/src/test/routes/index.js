@@ -1,4 +1,4 @@
-describe('Routes: index', () => {
+describe.only('Routes: index', () => {
   describe('GET /', () => {
     it('Returns the API status', (done) => {
       request
@@ -6,7 +6,7 @@ describe('Routes: index', () => {
         .expect(200)
         .end((err, res) => {
           const expected = {
-            status: 'Touch API'
+            status: 'Touch APIabc'
           }
 
           expect(res.body).to.eql(expected)
