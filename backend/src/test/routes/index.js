@@ -6,7 +6,7 @@ describe.only('Routes: index', () => {
         .expect(200)
         .end((err, res) => {
           const expected = {
-            status: 'Touch APIabc'
+            status: 'Touch API'
           }
 
           expect(res.body).to.eql(expected)
