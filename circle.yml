@@ -21,7 +21,9 @@ jobs:
             set -x
             cd devops/dockers/backend
             chmod +x ./runner.sh
-            ./runner.sh test up
+            ./runner.sh test build
+            ./runner.sh test "up postgres_test"
+            ./runner.sh test "up postgres_test echo 1"
 
       - deploy:
           name: Build and push Docker image
