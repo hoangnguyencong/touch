@@ -47,7 +47,7 @@ jobs:
             set -x
             cd backend/src
             chmod +x ./wait_for_it.sh
-            ./wait_for_it postgres_test:5432 -- npm run test
+            ./wait_for_it.sh postgres_test:5432 -- npm run test
 
 
       - deploy:
