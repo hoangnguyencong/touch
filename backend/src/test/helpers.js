@@ -3,6 +3,7 @@ import chai from 'chai'
 import app from '../index.js'
 import models from '../models'
 import config from '../libs/constants'
+var fs = require('fs')
 
 global.config = config
 global.apiPrefix = '/api/v1'
@@ -13,4 +14,8 @@ global.expect = chai.expect
 
 process.on('exit', (code) => {
   console.log(`About to exit with code: ${code}`);
+  fs.writeFile('result/test_result', code, function (err) {
+    if (err) throw err;
+    console.log('It\'s saved!');
+  })
 });
