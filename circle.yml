@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:slim # primary image
+      - image: hoangitdct/touchbuild:latest # primary image
 
     working_directory: touch_app
 
@@ -15,12 +15,12 @@ jobs:
 
       - setup_remote_docker
 
-      - run:
-          name: Install tools
-          command: |
-            curl https://releases.rancher.com/install-docker/17.03.sh | sh
-            curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-            su -c "chmod +x /usr/local/bin/docker-compose"
+      # - run:
+      #     name: Install tools
+      #     command: |
+      #       curl https://releases.rancher.com/install-docker/17.03.sh | sh
+      #       curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+      #       su -c "chmod +x /usr/local/bin/docker-compose"
 
       - run:
           name: Install node modules
@@ -34,7 +34,6 @@ jobs:
             set -x
             cd devops/dockers/backend
             chmod +x ./runner.sh
-            ./runner.sh test "build postgres_test"
             ./runner.sh test "up -d postgres_test"
 
       - run:
