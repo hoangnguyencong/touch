@@ -22,7 +22,7 @@ jobs:
             cd devops/dockers/backend
             chmod +x ./runner.sh
             ./runner.sh test build
-            ./runner.sh test "up postgres_test"
+            ./runner.sh test "up postgres_test -d"
             ./runner.sh test "up touch_test echo 1"
 
       - deploy:
