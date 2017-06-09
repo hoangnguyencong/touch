@@ -18,6 +18,6 @@ services:
     environment:
       NODE_ENV: test
     volumes:
-      - ../../../backend/test_result:/web/src/test/result
+      - ../../../backend/src:/web/src
 
     command: ["/usr/local/bin/wait_for_it.sh", "postgres_test:5432", "--", "npm", "run test"]
