@@ -25,8 +25,14 @@ jobs:
       - run:
           name: Install node modules
           command: |
-            cd backend/src
+            cd backend
+            adduser foo
+            chown -R foo /home/foo
+            chown -R foo /usr/local
+            chown -R foo /touch_app
+            cp src/package.json .
             npm install
+            exit
 
       - run:
           name: Start container
