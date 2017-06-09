@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: hoangitdct/touchbuild:latest # primary image
+      - image: hoangitdct/docker-compose:17.03.x-ce # primary image
 
     working_directory: touch_app
 
@@ -15,39 +15,13 @@ jobs:
 
       - setup_remote_docker
 
-      # - run:
-      #     name: Install tools
-      #     command: |
-      #       curl https://releases.rancher.com/install-docker/17.03.sh | sh
-      #       curl -L https://github.com/docker/compose/releases/download/1.13.0/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
-      #       su -c "chmod +x /usr/local/bin/docker-compose"
-
       - run:
-          name: Install node modules
-          command: |
-            adduser --quiet --disabled-password --gecos ""  foo
-            chown -R foo /home/foo
-            chown -R foo /usr/local
-            chown -R foo /touch_app
-            cp backend/src/package.json backend/
-            runuser -l  foo -c 'cd /touch_app/backend && npm install'
-
-      - run:
-          name: Start container
+          name: Start container and verify it's working
           command: |
             set -x
             cd devops/dockers/backend
             chmod +x ./runner.sh
-            ./runner.sh test "up -d postgres_test"
-
-      - run:
-          name: Testing backend
-          command: |
-            set -x
-            cd backend/src
-            chmod +x ./wait_for_it.sh
-            ./wait_for_it.sh postgres_test:5432 -- npm run test
-
+            ./runner.sh test up
 
       - deploy:
           name: Build and push Docker image

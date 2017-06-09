@@ -8,8 +8,6 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
       POSTGRES_DB: touchdb_test
-    ports:
-      - 5432:5432
 
   touch_test:
     image: hoangitdct/touchtest
