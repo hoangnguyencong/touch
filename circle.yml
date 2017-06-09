@@ -24,7 +24,6 @@ jobs:
             ./runner.sh test build
             ./runner.sh test "up -d postgres_test"
             ./runner.sh test "up touch_test"
-            echo $?
 
       - deploy:
           name: Build and push Docker image
