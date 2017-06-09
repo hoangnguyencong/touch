@@ -33,7 +33,7 @@ jobs:
             cp src/package.json .
             su foo
             npm install
-            exit
+            # exit
 
       - run:
           name: Start container
