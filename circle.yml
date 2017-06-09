@@ -31,9 +31,7 @@ jobs:
             chown -R foo /usr/local
             chown -R foo /touch_app
             cp src/package.json .
-            su foo
-            npm install
-            # exit
+            runuser -l  foo -c 'npm install'
 
       - run:
           name: Start container
