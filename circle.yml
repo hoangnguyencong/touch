@@ -31,6 +31,7 @@ jobs:
             chown -R foo /usr/local
             chown -R foo /touch_app
             cp src/package.json .
+            su foo
             npm install
             exit
 
