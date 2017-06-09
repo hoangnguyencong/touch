@@ -26,7 +26,7 @@ jobs:
           name: Install node modules
           command: |
             cd backend
-            adduser foo
+            adduser --quiet --disabled-password --gecos ""  foo
             chown -R foo /home/foo
             chown -R foo /usr/local
             chown -R foo /touch_app
