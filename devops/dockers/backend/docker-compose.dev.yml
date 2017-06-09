@@ -21,7 +21,7 @@ services:
       - postgres_dev
 
     volumes:
-      - ../../../backend/src:/web/src
+      - /mnt/test:/web/src/test/
 
     ports:
       - 3000
