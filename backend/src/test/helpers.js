@@ -14,7 +14,7 @@ global.expect = chai.expect
 
 process.on('exit', (code) => {
   console.log(`About to exit with code11: ${code}`);
-  fs.writeFile('result/test_result', code, function (err) {
+  fs.writeFileSync('test/result/test_result', code, function (err) {
     if (err) throw err;
     console.log('It\'s saved!');
   })
