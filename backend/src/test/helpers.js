@@ -10,3 +10,7 @@ global.models = models
 global.app = app
 global.request = supertest(app)
 global.expect = chai.expect
+
+process.on('exit', (code) => {
+  console.log(`About to exit with code: ${code}`);
+});
