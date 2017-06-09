@@ -25,13 +25,12 @@ jobs:
       - run:
           name: Install node modules
           command: |
-            cd backend
             adduser --quiet --disabled-password --gecos ""  foo
             chown -R foo /home/foo
             chown -R foo /usr/local
             chown -R foo /touch_app
             cp src/package.json .
-            runuser -l  foo -c 'npm install'
+            runuser -l  foo -c 'cd /touch_app/backend && npm install'
 
       - run:
           name: Start container
