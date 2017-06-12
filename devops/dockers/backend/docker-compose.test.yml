@@ -1,7 +1,7 @@
 version: '2'
 
-volumes:
-  /test_result:/web/src/test/result
+# volumes:
+#   /test_result:/web/src/test/result
 
 services:
   postgres_test:
