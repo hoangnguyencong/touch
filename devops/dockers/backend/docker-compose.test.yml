@@ -1,7 +1,7 @@
 version: '2'
 
 volumes:
-  touch:
+  test_result:
 
 services:
   postgres_test:
