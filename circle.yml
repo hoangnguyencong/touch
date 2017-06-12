@@ -3,7 +3,12 @@ version: 2
 jobs:
   build:
     docker:
-      - image: hoangitdct/docker-compose:17.03.x-ce # primary image
+      - image: node:slim # primary image
+      - image: postgres:9.6.3
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_PASSWORD: root
+          POSTGRES_DB: touchdb_test
 
     working_directory: touch_app
 
@@ -16,14 +21,21 @@ jobs:
       - setup_remote_docker
 
       - run:
-          name: Start container and verify it's working
+          name: Install node modules
           command: |
-            set -x
-            cd devops/dockers/backend
-            chmod +x ./runner.sh
-            ./runner.sh test build
-            ./runner.sh test "up -d postgres_test"
-            ./runner.sh test "up touch_test" > test_result
+            adduser --quiet --disabled-password --gecos ""  foo
+            chown -R foo /home/foo
+            chown -R foo /usr/local
+            chown -R foo /touch_app
+            cp backend/src/package.json backend/
+            runuser -l  foo -c 'cd /touch_app/backend && npm install'
+
+      - run:
+          name: Testing backend
+          command: |
+            cd backend/src
+            chmod +x ./wait_for_it.sh
+            ./wait_for_it.sh localhost:5432 -- npm run test
 
       - deploy:
           name: Build and push Docker image
