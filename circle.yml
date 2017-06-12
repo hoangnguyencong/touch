@@ -23,7 +23,7 @@ jobs:
             chmod +x ./runner.sh
             ./runner.sh test build
             ./runner.sh test "up -d postgres_test"
-            ./runner.sh test "up touch_test"
+            ./runner.sh test "up touch_test" > test_result
 
       - deploy:
           name: Build and push Docker image
