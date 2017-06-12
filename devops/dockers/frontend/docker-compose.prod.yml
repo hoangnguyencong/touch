@@ -9,8 +9,8 @@ services:
     environment:
       NODE_ENV: production
 
-    volumes:
-      - ../../../frontend/touch:/frontend/touch
+    # volumes:
+    #   - ../../../frontend/touch:/frontend/touch
 
     ports:
       - 4000:4000
