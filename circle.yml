@@ -52,7 +52,7 @@ jobs:
       - deploy:
           name: Build and push Docker image
           command: |
-            cd rancher
+            cd devops/rancher
             chmod +x build.sh
             ./build.sh
 
