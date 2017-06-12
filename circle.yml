@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: node:slim # primary image
+      - image: hoangitdct/touchbuild:latest # primary image
         environment:
           DATABASE_HOST: localhost
 
@@ -52,7 +52,9 @@ jobs:
       - deploy:
           name: Build and push Docker image
           command: |
-            echo "deployment"
+            cd rancher
+            chmod +x build.sh
+            ./build.sh
 
       - store_artifacts:
           path: /tmp/test-results

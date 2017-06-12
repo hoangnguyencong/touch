@@ -1,0 +1,1 @@
+sudo docker run -e CATTLE_HOST_LABELS='touchdb=true&touchserver=true&touchlb=true&touchfrontend=true'  --rm --privileged -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/rancher:/var/lib/rancher rancher/agent:v1.2.2 http://172.16.126.107:8080/v1/scripts/63E195C1D87061632707:1483142400000:ZiMt0NGmErTNpCU84KUUtLp8dk
