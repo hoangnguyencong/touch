@@ -6,7 +6,6 @@ docker build -f Dockerfile.prod -t hoangitdct/touchserver:latest .
 
 echo "build frontend code base..."
 cd ../../devops/dockers/frontend
-./runner.sh prod build && ./runner.sh prod build && \
 ./runner.sh prod build && ./runner.sh prod up && \
 
 echo "build nginx for server static files"
