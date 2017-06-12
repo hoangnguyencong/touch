@@ -18,6 +18,3 @@ echo "push image to docker registry"
 docker login --username=$1 --password=$2 && \
 docker push hoangitdct/touchserver:latest && \
 docker push hoangitdct/touchfrontendnginx:latest
-
-echo "Deploy to rancher"
-cd bin && ./init.sh
