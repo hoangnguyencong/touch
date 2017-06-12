@@ -9,6 +9,8 @@ services:
     environment:
       NODE_ENV: production
 
+    container_name: touchdb_frontend_prod
+
     # volumes:
     #   - ../../../frontend/touch:/frontend/touch
 

@@ -9,7 +9,9 @@ cd ../../devops/dockers/frontend
 ./runner.sh prod build && ./runner.sh prod up && \
 
 echo "build nginx for server static files"
-rm -rf ../nginx-frontend/dist && cp -r ../../../frontend/touch/dist ../nginx-frontend && \
+rm -rf ../nginx-frontend/dist && \
+docker cp touchdb_frontend_prod:/frontend/touch/dist ../nginx-frontend && \
+# cp -r ../../../frontend/touch/dist ../nginx-frontend && \
 cd ../nginx-frontend && docker build -t hoangitdct/touchfrontendnginx:latest . && \
 
 echo "push image to docker registry"
