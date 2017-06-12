@@ -4,6 +4,9 @@ jobs:
   build:
     docker:
       - image: node:slim # primary image
+        environment:
+          DATABASE_HOST: localhost
+
       - image: postgres:9.6.3
         environment:
           POSTGRES_USER: root
