@@ -17,10 +17,10 @@ config.logging = (sql) => {
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
+  config.host = process.env.DATABASE_HOST || config.host;
+
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
-
-console.log(process.env.DATABASE_HOST)
 
 fs
   .readdirSync(__dirname)
