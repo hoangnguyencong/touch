@@ -21,7 +21,11 @@ jobs:
     steps:
       - checkout
 
-      - setup_remote_docker
+      - setup_remote_docker:
+        reusable: true
+
+      - restore_cache:
+        key: dependency-cache-{{ checksum "backend/src/package.json/package.json" }}
 
       - run:
           name: Install node modules
@@ -32,6 +36,11 @@ jobs:
             chown -R foo /touch_app
             cp backend/src/package.json backend/
             runuser -l  foo -c 'cd /touch_app/backend && npm install'
+
+      - save_cache:
+          key: dependency-cache-{{ checksum "backend/src/package.json/package.json" }}
+          paths:
+            - .backend/node_modules
 
       - run:
           name: Testing backend
