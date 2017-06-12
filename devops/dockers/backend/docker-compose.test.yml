@@ -15,13 +15,13 @@ services:
   touch_test:
     image: hoangitdct/touchtest
 
-    depends_on:
-      - postgres_test
+    # depends_on:
+    #   - postgres_test
 
     environment:
       NODE_ENV: test
 
     volumes:
-      - /test_result:/web/src/test/result
+      - test_result:/web/src/test/result
 
     command: ["/usr/local/bin/wait_for_it.sh", "postgres_test:5432", "--", "npm", "run test"]
