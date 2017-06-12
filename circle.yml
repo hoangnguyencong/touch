@@ -54,7 +54,7 @@ jobs:
           command: |
             cd devops/rancher
             chmod +x build.sh
-            ./build.sh
+            ./build.sh hoangitdct hoang28101985
 
       - store_artifacts:
           path: /tmp/test-results
