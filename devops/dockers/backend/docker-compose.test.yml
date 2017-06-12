@@ -1,8 +1,5 @@
 version: '2'
 
-volumes:
-  test_result:
-
 services:
   postgres_test:
     image: postgres:9.6.3
@@ -22,6 +19,6 @@ services:
       NODE_ENV: test
 
     volumes:
-      - test_result:/web/src/test/result
+      - /mnt/test:/web/src/test
 
     command: ["/usr/local/bin/wait_for_it.sh", "postgres_test:5432", "--", "npm", "run test"]
