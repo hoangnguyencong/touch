@@ -22,7 +22,8 @@ docker push hoangitdct/touchfrontendnginx:latest
 echo "caching image"
 if [ $3 ]
 then
-  NOW=`date +%Y-%m-%d:%H:%M:%S`
+  echo $3
+  NOW=`date +%Y-%m-%d-%H-%M-%S`
   docker tag hoangitdct/touchserver:latest "hoangitdct/touchserver:latest-${NOW}"
   docker tag hoangitdct/touchfrontendnginx:latest "hoangitdct/touchfrontendnginx:latest-${NOW}"
 fi
