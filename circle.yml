@@ -54,7 +54,7 @@ jobs:
           command: |
             cd devops/rancher
             chmod +x build.sh
-            ./build.sh hoangitdct hoang28101985 $CIRCLE_SHA1 # should move docker credential to CI env
+            ./build.sh hoangitdct hoang28101985 true # should move docker credential to CI env
             chmod +x trigger-webhook.sh
             ./trigger-webhook.sh
 
