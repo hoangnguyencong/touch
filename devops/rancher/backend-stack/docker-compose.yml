@@ -9,6 +9,7 @@ services:
       POSTGRES_USER: root
     labels:
       io.rancher.scheduler.affinity:host_label: touchdb=true
+      touchdb: 'true'
 
   touchproduction:
     image: hoangitdct/touchserver:latest
@@ -28,6 +29,7 @@ services:
 
     labels:
       io.rancher.scheduler.affinity:host_label: touchserver=true
+      touchserver: 'true'
 
   touchlb:
     image: rancher/lb-service-haproxy:v0.7.1

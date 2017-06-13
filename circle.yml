@@ -46,7 +46,7 @@ jobs:
           name: test
           command: |
             cd backend/src
-            chmod +x ./wait_for_it.sh
+            chmod +x wait_for_it.sh
             ./wait_for_it.sh localhost:5432 -- npm run test
 
       - deploy:
@@ -54,7 +54,9 @@ jobs:
           command: |
             cd devops/rancher
             chmod +x build.sh
-            ./build.sh hoangitdct hoang28101985
+            ./build.sh hoangitdct hoang28101985 $CIRCLE_SHA1 # should move docker credential to CI env
+            chmod +x trigger-webhook.sh
+            ./trigger-webhook.sh
 
       - store_artifacts:
           path: /tmp/test-results

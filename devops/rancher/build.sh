@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "build server code base..."
-cd ../../backend/src && \
+cd ../../backend/src
 docker build -f Dockerfile.prod -t hoangitdct/touchserver:latest .
 
 echo "build frontend code base..."
@@ -18,3 +18,11 @@ echo "push image to docker registry"
 docker login --username=$1 --password=$2 && \
 docker push hoangitdct/touchserver:latest && \
 docker push hoangitdct/touchfrontendnginx:latest
+
+echo "caching image"
+if [ $3 ]
+then
+  NOW=`date +%Y-%m-%d:%H:%M:%S`
+  docker tag hoangitdct/touchserver:latest "hoangitdct/touchserver:latest-${NOW}"
+  docker tag hoangitdct/touchfrontendnginx:latest "hoangitdct/touchfrontendnginx:latest-${NOW}"
+fi
