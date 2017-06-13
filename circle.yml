@@ -43,7 +43,7 @@ jobs:
             - .backend/node_modules
 
       - run:
-          name: Testing backend
+          name: test
           command: |
             cd backend/src
             chmod +x ./wait_for_it.sh
